@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Feliz Día de las Madres, Luisa 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --rose:#e8405a;--rose2:#c02040;--pink:#f4a0b8;--pink2:#f8d0dc;
+  --cream:#fce9ef;--cream2:#f9dce5;--brown:#5a2a20;--text:#3a1818;--mid:#7a3535;
+}
+html{scroll-behavior:smooth}
+body{background:#fce9ef;font-family:'Cormorant Garamond',Georgia,serif;color:var(--text);overflow-x:hidden;}
+
+
+/* HEARTS */
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden;}
+.fh{position:absolute;top:-50px;opacity:0;animation:fallH linear infinite;will-change:transform,opacity;}
+.fh svg{display:block;width:100%;height:100%;}
+@keyframes fallH{0%{transform:translateY(0) rotate(-10deg);opacity:0}8%{opacity:.9}85%{opacity:.6}100%{transform:translateY(108vh) rotate(20deg);opacity:0}}
+
+/* SECTIONS */
+section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(3rem,8vw,6rem) clamp(1.5rem,5vw,5rem);opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease;}
+section.visible{opacity:1;transform:translateY(0)}
+
+/* PORTADA */
+#portada{background:#fce9ef;flex-direction:row;gap:clamp(2rem,5vw,5rem);flex-wrap:wrap;justify-content:center;align-items:center;}
+.portada-text{flex:1 1 280px;max-width:420px;display:flex;flex-direction:column;gap:1.4rem;}
+.eyebrow{font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,2.5vw,1.6rem);color:var(--rose);letter-spacing:.02em;}
+.portada-text h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:700;color:var(--text);line-height:1.15;}
+.portada-text h1 span{color:var(--rose);font-style:italic;}
+.portada-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.35rem);color:var(--mid);line-height:1.7;font-style:italic;}
+.scroll-hint{display:flex;align-items:center;gap:.6rem;color:var(--rose);animation:bounce 2s ease-in-out infinite;font-family:'Dancing Script',cursive;font-size:1.1rem;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.portada-tree{flex:0 0 auto;display:flex;align-items:center;justify-content:center;}
+.tree-img{width:clamp(220px,32vw,400px);height:auto;display:block;animation:treeFloat 7s ease-in-out infinite;border-radius:20px;box-shadow:0 8px 40px rgba(180,60,80,.22);border:4px solid #f4c0cc;object-fit:cover;}
+@keyframes treeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* POEMA */
+#poema{background:#fce9ef;text-align:center;gap:2.5rem;max-width:720px;margin:0 auto;padding:clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,3rem);width:100%;}
+.section-tag{font-family:'Dancing Script',cursive;font-size:clamp(1.1rem,2.2vw,1.4rem);color:var(--rose);letter-spacing:.05em;}
+#poema h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;font-style:italic;color:var(--text);line-height:1.3;}
+.poem-body{display:flex;flex-direction:column;gap:1.4rem;}
+.poem-body p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,2.2vw,1.5rem);line-height:1.85;color:var(--text);}
+.poem-firma{font-family:'Dancing Script',cursive;font-size:clamp(1.3rem,2.5vw,1.7rem);color:var(--rose);margin-top:.5rem;}
+
+/* GALERÍA */
+#galeria{background:#fce9ef;gap:3rem;padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);width:100%;}
+#galeria h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-style:italic;color:var(--text);text-align:center;}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem;width:100%;max-width:1100px;}
+.photo-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(180,60,80,.10);opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease,box-shadow .35s ease;}
+.photo-card.visible{opacity:1;transform:translateY(0)}
+.photo-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(180,60,80,.20);}
+.photo-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.photo-caption{padding:1rem 1.2rem 1.2rem;border-top:2px solid var(--pink2);}
+.photo-caption strong{display:block;font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;color:var(--rose2);margin-bottom:.4rem;}
+.photo-caption p{font-family:'Cormorant Garamond',serif;font-size:.98rem;line-height:1.6;color:var(--mid);font-style:italic;}
+
+/* CONTADOR */
+#contador{background:#fce9ef;text-align:center;gap:2.5rem;}
+#contador h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-style:italic;color:var(--text);}
+#contador .sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.8vw,1.25rem);color:var(--mid);font-style:italic;}
+.counter-grid{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;}
+.cunit{background:#fff;border-radius:16px;padding:1.5rem 2rem;box-shadow:0 4px 20px rgba(180,60,80,.12);display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:110px;}
+.cunit span{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;color:var(--rose);line-height:1;}
+.cunit small{font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--mid);text-transform:uppercase;letter-spacing:.1em;}
+
+/* FINAL */
+#final{background:#fce9ef;text-align:center;gap:2rem;}
+#final .big-heart{font-size:clamp(3rem,8vw,5rem);animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+#final h2{font-family:'Dancing Script',cursive;font-size:clamp(2rem,5vw,3.2rem);color:var(--rose);}
+#final .msg{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.2vw,1.45rem);line-height:1.85;color:var(--text);max-width:600px;font-style:italic;}
+#final .firma-final{font-family:'Dancing Script',cursive;font-size:clamp(1.4rem,3vw,2rem);color:var(--rose2);}
+.hearts-deco{font-size:1.8rem;letter-spacing:.4rem;animation:pulse 2.2s ease-in-out infinite;color:var(--rose);}
+.divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,var(--rose),transparent);border-radius:2px;margin:0 auto;}
+
+@media(max-width:650px){
+  #portada{flex-direction:column;text-align:center;padding:2rem 1.2rem;}
+  .portada-text{align-items:center;}
+  .tree-img{width:clamp(200px,70vw,320px);}
+  .gallery-grid{grid-template-columns:1fr 1fr;gap:.8rem;}
+  #poema{padding:3rem 1.2rem;}
+  .poem-body p{font-size:1.15rem;}
+  .counter-grid{gap:.7rem;}
+  .cunit{min-width:70px;padding:1rem;}
+  .cunit span{font-size:2rem;}
+  #final .msg{font-size:1.1rem;padding:0 .5rem;}
+}
+@media(max-width:420px){
+  .gallery-grid{grid-template-columns:1fr;}
+  .cunit{min-width:60px;padding:.8rem;}
+  .portada-text h1{font-size:2.4rem;}
+  section{padding:2.5rem 1rem;}
+  #galeria{padding:2.5rem 1rem;}
+  .photo-caption strong{font-size:.95rem;}
+  .photo-caption p{font-size:.88rem;}
+  #musicBtn{bottom:16px;right:16px;width:50px;height:50px;font-size:1.3rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- MÚSICA DE FONDO -->
+<iframe id="bgMusic"
+  src=""
+  style="display:none;width:0;height:0;border:0"
+  allow="autoplay">
+</iframe>
+
+<!-- BOTÓN FLOTANTE DE MÚSICA -->
+<button id="musicBtn" onclick="toggleMusic()" title="Reproducir música">
+  🎵
+</button>
+
+<style>
+#musicBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  background: linear-gradient(135deg, #e8405a, #c02040);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(180,60,80,.45);
+  transition: transform .2s ease, box-shadow .2s ease;
+  animation: pulsBtn 2s ease-in-out infinite;
+}
+#musicBtn:hover { transform: scale(1.12); box-shadow: 0 8px 28px rgba(180,60,80,.6); }
+@keyframes pulsBtn { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+#musicBtn.playing { animation: none; }
+</style>
+
+<script>
+let playing = false;
+const btn = document.getElementById('musicBtn');
+const frame = document.getElementById('bgMusic');
+
+function toggleMusic() {
+  if (!playing) {
+    frame.src = "https://www.youtube.com/embed/STQtVaAO3pQ?autoplay=1&loop=1&playlist=STQtVaAO3pQ";
+    btn.textContent = '⏸';
+    btn.classList.add('playing');
+    playing = true;
+  } else {
+    frame.src = '';
+    btn.textContent = '🎵';
+    btn.classList.remove('playing');
+    playing = false;
+  }
+}
+</script>
+
+<div id="hearts"></div>
+
+<!-- PORTADA -->
+<section id="portada">
+  <div class="portada-text">
+    <span class="eyebrow">🌸 Feliz Día de las Madres</span>
+    <h1>Para ti,<br><span>Luisa</span></h1>
+    <p class="portada-sub">La mujer que me dio la vida,<br>el amor que nunca falla,<br>mi mayor motivo para ser mejor.</p>
+    <div class="scroll-hint">↓ Baja y descubre algo especial…</div>
+  </div>
+  <div class="portada-tree">
+    <img class="tree-img" src="img/foto01.jpeg" alt="Luisa"/>
+  </div>
+</section>
+
+<!-- POEMA -->
+<section id="poema">
+  <span class="section-tag">✨ Unas palabras del corazón</span>
+  <div class="divider"></div>
+  <h2>"Mamá, eres mi lugar en el mundo"</h2>
+  <div class="poem-body">
+    <p>Antes de que supiera hablar,<br>ya conocía el sonido de tu voz.<br>Antes de saber caminar,<br>ya sentía el calor de tus brazos.</p>
+    <p>Me enseñaste que el amor no se dice solo con palabras —<br>se demuestra con cada sacrificio silencioso,<br>con cada noche que velaste por mí.</p>
+    <p>Hay madres que dan la vida una vez.<br>Tú me la has dado mil veces,<br>en cada abrazo, en cada consejo,<br>en cada "yo creo en ti" cuando nadie más creía.</p>
+    <p>Gracias, mamá. Por todo.<br>Por lo que sé que hiciste<br>y por lo que nunca me contaste.</p>
+  </div>
+  <div class="divider"></div>
+  <p class="poem-firma">— Con todo mi amor, Frank 💕</p>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <h2>Momentos que guardo en el corazón</h2>
+  <div class="divider"></div>
+  <div class="gallery-grid" id="gallery">
+    <div class="photo-card">
+      <img src="img/foto02.jpeg" alt="Nuestra familia unida" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Nuestra familia unida</strong>
+        <p>Los momentos contigo son los más valiosos de mi vida. Gracias por siempre estar.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto03.jpeg" alt="Siempre radiante" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Siempre radiante</strong>
+        <p>Tu sonrisa ilumina cada lugar al que llegas. Eres pura luz, mamá.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto04.jpeg" alt="El amor más puro" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>El amor más puro</strong>
+        <p>Un beso que dice todo lo que las palabras no pueden expresar.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto05.jpeg" alt="Orgullosa de tu hijo" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Orgullosa de tu hijo</strong>
+        <p>Estuviste ahí en cada logro. Este título también es tuyo, mamá.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto06.jpeg" alt="Celebrando tus logros" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Celebrando tus logros</strong>
+        <p>Mamá graduada — porque nunca dejaste de superarte ni de inspirarnos.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto07.jpeg" alt="La familia celebra contigo" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Siempre celebras con tu familia</strong>
+        <p>Cada triunfo de tu familia era y es motivo de  fiesta para ti siempre te alegras por el logro del otro.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto08.jpeg" alt="Hermosa como siempre" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Buena esposa y buena madre</strong>
+        <p>Elegante, fuerte y feliz. Así te veo yo cada día.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto09.jpeg" alt="Disfrutando la vida" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Disfrutando la vida</strong>
+        <p>Mereces todos los jardines del mundo, mamá. Y mucho más.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto10.jpeg" alt="Aventurera sin límites" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Aventurera sin límites</strong>
+        <p>Nada te detiene. Eres la mujer más valiente que conozco.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto11.jpeg" alt="En tu elemento" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>En tu elemento</strong>
+        <p>Libre, tranquila y hermosa. Así eres tú cuando dejas ir el mundo.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto12.jpeg" alt="Trabajadora incansable" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Trabajadora incansable</strong>
+        <p>Con esfuerzo y dedicación nos diste todo. Gracias por tanto, mamá.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="img/foto13.jpeg" alt="Sirviendo a los demás" loading="lazy"/>
+      <div class="photo-caption">
+        <strong>Sirviendo a los demás</strong>
+        <p>Tu corazón grande siempre encuentra la forma de dar a otros. Te admiro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTADOR -->
+<section id="contador">
+  <span class="section-tag">🌺 Desde que te convertiste en mamá</span>
+  <div class="divider"></div>
+  <h2>Han pasado…</h2>
+  <p class="sub">Cada segundo de ese tiempo fuiste la mejor mamá del mundo.</p>
+  <div class="counter-grid">
+    <div class="cunit"><span id="c-years">0</span><small>años</small></div>
+    <div class="cunit"><span id="c-days">000</span><small>días</small></div>
+    <div class="cunit"><span id="c-hours">00</span><small>horas</small></div>
+    <div class="cunit"><span id="c-minutes">00</span><small>minutos</small></div>
+    <div class="cunit"><span id="c-seconds">00</span><small>segundos</small></div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section id="final">
+  <div class="big-heart">🌸</div>
+  <h2>Te amo, mamá</h2>
+  <div class="divider"></div>
+  <p class="msg">No hay palabras suficientes para decirte lo que significas para mí.<br>Pero espero que cada foto de esta página te recuerde<br>que fuiste, eres y serás siempre<br>lo más importante de mi vida.</p>
+  <p class="firma-final">Con todo mi corazón,<br>tu hijo Frank 💗</p>
+  <p class="hearts-deco">♥ ♥ ♥</p>
+</section>
+
+<script>
+'use strict';
+const hContainer = document.getElementById('hearts');
+const COLORS = ['#e02040','#cc1030','#f05070','#ff6888','#f090a8','#ffb0c0','#d04060','#b01828'];
+
+function spawnHeart() {
+  const size  = 10 + Math.random() * 26;
+  const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+  const el    = document.createElement('div');
+  el.classList.add('fh');
+  el.innerHTML = `<svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg"><path d="M50 80 C50 80 10 55 10 30 C10 12 25 5 38 5 C44 5 49 8 50 12 C51 8 56 5 62 5 C75 5 90 12 90 30 C90 55 50 80 50 80Z" fill="${color}"/></svg>`;
+  el.style.cssText = `left:${Math.random()*100}vw;width:${size}px;height:${size*.9}px;animation-duration:${8+Math.random()*10}s;animation-delay:-${Math.random()*18}s;`;
+  hContainer.appendChild(el);
+}
+for (let i = 0; i < 55; i++) spawnHeart();
+setInterval(() => { if (hContainer.children.length < 70) spawnHeart(); }, 900);
+
+/* Scroll reveal */
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.1});
+document.querySelectorAll('section').forEach(s => obs.observe(s));
+
+const cardObs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*80); });
+}, {threshold:0.08});
+document.querySelectorAll('.photo-card').forEach(c => cardObs.observe(c));
+
+/* Counter — desde 15 julio 2003 12:00 PM */
+const START = new Date(2003, 6, 15, 12, 0, 0);
+function updateCounter() {
+  const diff  = Math.max(0, Math.floor((new Date() - START) / 1000));
+  const years = Math.floor(diff / (365.25*86400));
+  const rem   = diff - Math.floor(years*365.25*86400);
+  document.getElementById('c-years').textContent   = years;
+  document.getElementById('c-days').textContent    = String(Math.floor(rem/86400)).padStart(3,'0');
+  document.getElementById('c-hours').textContent   = String(Math.floor((rem%86400)/3600)).padStart(2,'0');
+  document.getElementById('c-minutes').textContent = String(Math.floor((rem%3600)/60)).padStart(2,'0');
+  document.getElementById('c-seconds').textContent = String(rem%60).padStart(2,'0');
+}
+updateCounter();
+setInterval(updateCounter, 1000);
+</script>
+</body>
+</html>
