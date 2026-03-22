@@ -104,11 +104,9 @@ section.visible{opacity:1;transform:translateY(0)}
 <body>
 
 <!-- MÚSICA DE FONDO -->
-<iframe id="bgMusic"
-  src=""
-  style="display:none;width:0;height:0;border:0"
-  allow="autoplay">
-</iframe>
+<audio id="bgMusic" loop>
+  <source src="img/musica.mp3" type="audio/mpeg">
+</audio>
 
 <!-- BOTÓN FLOTANTE DE MÚSICA -->
 <button id="musicBtn" onclick="toggleMusic()" title="Reproducir música">
@@ -141,16 +139,16 @@ section.visible{opacity:1;transform:translateY(0)}
 <script>
 let playing = false;
 const btn = document.getElementById('musicBtn');
-const frame = document.getElementById('bgMusic');
+const audio = document.getElementById('bgMusic');
 
 function toggleMusic() {
   if (!playing) {
-    frame.src = "https://www.youtube.com/embed/STQtVaAO3pQ?autoplay=1&loop=1&playlist=STQtVaAO3pQ";
+    audio.play();
     btn.textContent = '⏸';
     btn.classList.add('playing');
     playing = true;
   } else {
-    frame.src = '';
+    audio.pause();
     btn.textContent = '🎵';
     btn.classList.remove('playing');
     playing = false;
